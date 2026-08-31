@@ -1,0 +1,8 @@
+.btn-prev {
+  background: #334155;
+  color: #fff;
+}
+
+.btn-prev:hover {
+  background: #1e293b;
+}
