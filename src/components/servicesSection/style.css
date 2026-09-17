@@ -1,15 +1,14 @@
 .section-servicos {
-  background: #0f172a;
-  max-width: 960px;
+  background: var(--bg);
 }
 
-.section-intro {
-  margin: 0 0 0.5rem;
+.section-inner-wide {
+  max-width: 60rem;
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
-  margin-top: 0.5rem;
+  margin-top: 0.35rem;
 }

@@ -1,8 +1,9 @@
 .btn-next {
-  background: #0ea5e9;
-  color: #fff;
+  border-color: rgba(59, 130, 246, 0.35);
+  color: #bfdbfe;
 }
 
 .btn-next:hover {
-  background: #0284c7;
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--text);
 }

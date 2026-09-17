@@ -1,8 +1,10 @@
 .btn-home {
-  background: #2563eb;
-  color: #fff;
+  background: var(--accent-soft);
+  border-color: var(--border-strong);
+  color: var(--accent-bright);
 }
 
 .btn-home:hover {
-  background: #1d4ed8;
+  background: rgba(34, 211, 238, 0.2);
+  color: var(--text);
 }
