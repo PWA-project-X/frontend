@@ -17,16 +17,19 @@ function HomeSection({ company }: HomeSectionProps) {
       aria-labelledby="home-title"
     >
       <div className="home-glow" aria-hidden="true" />
-      <p className="section-number">01</p>
-      <p className="eyebrow">{company.city}</p>
-      <h1 id="home-title">{company.project}</h1>
-      <p className="lead">
-        Espaço único para apresentar a {company.name}, seus serviços e o
-        processo de trabalho — simples, responsivo e instalável como PWA.
-      </p>
-      <a className="cta-link" href="#sobre">
-        Conhecer a empresa
-      </a>
+      <div className="section-inner home-inner">
+        <p className="section-number">01</p>
+        <p className="eyebrow">{company.city}</p>
+        <h1 id="home-title">{company.name}</h1>
+        <p className="hero-subtitle">{company.project}</p>
+        <p className="lead">
+          Espaço único para apresentar a empresa, seus serviços e o processo de
+          trabalho — simples, responsivo e instalável como PWA.
+        </p>
+        <a className="cta-link" href="#sobre">
+          Conhecer a empresa
+        </a>
+      </div>
     </section>
   )
 }

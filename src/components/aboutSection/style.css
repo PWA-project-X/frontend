@@ -3,8 +3,8 @@
 }
 
 .about-meta {
-  margin-top: 0.5rem;
-  padding: 0.95rem 1.1rem;
+  margin-top: 0.35rem;
+  padding: 1rem 1.15rem;
   border-radius: var(--radius-card);
   background: var(--surface);
   border: 1px solid var(--border);

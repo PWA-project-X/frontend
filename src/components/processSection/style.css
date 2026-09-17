@@ -3,7 +3,24 @@
 }
 
 .process-list {
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
+  padding-left: 1.35rem;
+}
+
+.process-list::before {
+  content: '';
+  position: absolute;
+  left: 0.35rem;
+  top: 0.85rem;
+  bottom: 0.85rem;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    var(--accent),
+    rgba(59, 130, 246, 0.35),
+    transparent
+  );
 }

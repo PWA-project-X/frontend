@@ -44,25 +44,27 @@ function Header({ brand }: HeaderProps) {
 
   return (
     <header className="topbar">
-      <a href="#home" className="brand">
-        {brand}
-      </a>
+      <div className="topbar-main">
+        <a href="#home" className="brand">
+          {brand}
+        </a>
 
-      <nav className="nav-links" aria-label="Seções principais">
-        {NAV_LINKS.map((link) => {
-          const isActive = activeId === link.id
-          return (
-            <a
-              key={link.id}
-              href={`#${link.id}`}
-              className={`nav-link${isActive ? ' is-active' : ''}`}
-              aria-current={isActive ? 'page' : undefined}
-            >
-              {link.label}
-            </a>
-          )
-        })}
-      </nav>
+        <nav className="nav-links" aria-label="Seções principais">
+          {NAV_LINKS.map((link) => {
+            const isActive = activeId === link.id
+            return (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                className={`nav-link${isActive ? ' is-active' : ''}`}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            )
+          })}
+        </nav>
+      </div>
 
       <nav className="nav-actions" aria-label="Atalhos de navegação">
         <ButtonHome targetId="home" />

@@ -1,9 +1,10 @@
 .btn-home {
-  background: linear-gradient(135deg, var(--accent), #2563eb);
+  background: var(--accent-soft);
   border-color: var(--border-strong);
-  color: #fff;
+  color: var(--accent-bright);
 }
 
 .btn-home:hover {
-  background: linear-gradient(135deg, #60a5fa, var(--accent));
+  background: rgba(34, 211, 238, 0.2);
+  color: var(--text);
 }
