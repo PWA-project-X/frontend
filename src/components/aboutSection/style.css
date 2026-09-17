@@ -1,16 +1,18 @@
 .section-sobre {
-  background: #0b1220;
+  background: var(--bg-elevated);
 }
 
 .about-meta {
   margin-top: 0.5rem;
-  padding: 0.85rem 1rem;
-  border-radius: 0.75rem;
-  background: #1e293b;
-  color: #e2e8f0;
+  padding: 0.95rem 1.1rem;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  color: var(--muted);
   font-size: 0.95rem;
 }
 
 .about-meta strong {
-  color: #f8fafc;
+  color: var(--text);
 }

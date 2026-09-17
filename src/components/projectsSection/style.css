@@ -1,10 +1,6 @@
 .section-projetos {
-  background: #0b1220;
+  background: var(--bg-elevated);
   max-width: 960px;
-}
-
-.section-intro {
-  margin: 0 0 0.5rem;
 }
 
 .projects-grid {
