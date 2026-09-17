@@ -56,7 +56,7 @@ export const servicesFallback: ServiceItem[] = [
   },
 ]
 
-export const processSteps: ProcessStepItem[] = [
+export const processStepsFallback: ProcessStepItem[] = [
   {
     id: 'entender',
     number: '01',

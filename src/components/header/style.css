@@ -46,6 +46,11 @@
   border-bottom-color: #2563eb;
 }
 
+.nav-link.is-active {
+  color: #f8fafc;
+  border-bottom-color: #60a5fa;
+}
+
 .nav-actions {
   display: flex;
   flex-wrap: wrap;

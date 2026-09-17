@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getCompany, getServices } from './api/client'
+import { getCompany, getProcess, getServices } from './api/client'
 import Header from './components/header/Header'
 import HomeSection from './components/homeSection/HomeSection'
 import AboutSection from './components/aboutSection/AboutSection'
@@ -8,8 +8,10 @@ import ProcessSection from './components/processSection/ProcessSection'
 import ButtonScrollTop from './components/buttonScrollTop/ButtonScrollTop'
 import {
   companyFallback,
+  processStepsFallback,
   servicesFallback,
   type CompanyInfo,
+  type ProcessStepItem,
   type ServiceItem,
 } from './data/content'
 import './App.css'
@@ -17,18 +19,27 @@ import './App.css'
 function App() {
   const [company, setCompany] = useState<CompanyInfo>(companyFallback)
   const [services, setServices] = useState<ServiceItem[]>(servicesFallback)
+  const [steps, setSteps] = useState<ProcessStepItem[]>(processStepsFallback)
+  const [usingFallback, setUsingFallback] = useState(false)
 
   useEffect(() => {
     let cancelled = false
 
     async function load() {
-      const [companyData, servicesData] = await Promise.all([
+      const [companyResult, servicesResult, processResult] = await Promise.all([
         getCompany(),
         getServices(),
+        getProcess(),
       ])
       if (!cancelled) {
-        setCompany(companyData)
-        setServices(servicesData)
+        setCompany(companyResult.data)
+        setServices(servicesResult.data)
+        setSteps(processResult.data)
+        setUsingFallback(
+          companyResult.fromFallback ||
+            servicesResult.fromFallback ||
+            processResult.fromFallback,
+        )
       }
     }
 
@@ -42,11 +53,17 @@ function App() {
     <div className="app">
       <Header brand={company.name} />
 
+      {usingFallback ? (
+        <p className="api-fallback-notice" role="status">
+          Conteúdo local — API indisponível
+        </p>
+      ) : null}
+
       <main>
         <HomeSection company={company} />
         <AboutSection company={company} />
         <ServicesSection services={services} />
-        <ProcessSection />
+        <ProcessSection steps={steps} />
       </main>
 
       <ButtonScrollTop />
