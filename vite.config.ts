@@ -14,8 +14,8 @@ export default defineConfig({
         short_name: 'Miniverso',
         description:
           'Portfólio interno da Miniverso — empresa, serviços e processo de trabalho.',
-        theme_color: '#2563eb',
-        background_color: '#0f172a',
+        theme_color: '#22d3ee',
+        background_color: '#070b14',
         display: 'standalone',
         start_url: '/',
         icons: [
