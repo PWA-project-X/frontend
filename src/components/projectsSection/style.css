@@ -1,0 +1,15 @@
+.section-projetos {
+  background: #0b1220;
+  max-width: 960px;
+}
+
+.section-intro {
+  margin: 0 0 0.5rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
