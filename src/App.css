@@ -2,6 +2,16 @@
   min-height: 100vh;
 }
 
+.api-fallback-notice {
+  margin: 0;
+  padding: 0.55rem 1.25rem;
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
+  color: #93c5fd;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
 .btn-nav {
   border: none;
   border-radius: 999px;

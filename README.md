@@ -22,7 +22,13 @@ Suba o backend em outro terminal (`npm run dev` no repositório backend) e depoi
 npm run dev
 ```
 
-O front usa `VITE_API_URL` (padrão `http://localhost:3001`) para buscar `/api/company` e `/api/services`. Se a API estiver indisponível, o conteúdo local em `src/data/content.ts` é usado automaticamente.
+O front usa `VITE_API_URL` (padrão `http://localhost:3001`) para buscar `/api/company`, `/api/services` e `/api/process`. Se a API estiver indisponível, o conteúdo local em `src/data/content.ts` é usado automaticamente e um aviso discreto aparece no topo.
+
+### Testar o fallback
+
+1. Pare o backend
+2. Recarregue o front em `http://localhost:5173`
+3. Confirme o aviso “Conteúdo local — API indisponível” e o conteúdo das seções
 
 ## Seções
 
@@ -63,6 +69,24 @@ src/components/
 | `npm run build` | Build de produção (+ service worker) |
 | `npm run preview` | Preview do build (teste PWA) |
 | `npm run lint` | ESLint |
+
+## Requisitos cobertos (v1)
+
+| ID | Descrição |
+| --- | --- |
+| RF01 | Página inicial com o nome do projeto |
+| RF02 | Seção Sobre |
+| RF03 | Informações gerais da proposta |
+| RF04–RF05 | Seção de serviços em cards |
+| RF06 | Seção de processo simplificado |
+| RF07–RF10 | Navegação por links, anterior, próxima e topo |
+| RF11 | Interface responsiva |
+| RF15 | Uso como PWA |
+| RNF01 | React + TypeScript + Vite |
+| RNF03–RNF04 | Responsivo e contraste adequado |
+| RNF05 | Componentes em arquivos separados |
+| RNF06–RNF09 | Scripts, PWA, navegação simples |
+| RNF10 | Conteúdo extraído (`src/data/content.ts` + API) |
 
 ## Backend
 

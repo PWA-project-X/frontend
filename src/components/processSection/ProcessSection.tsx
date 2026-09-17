@@ -1,8 +1,12 @@
-import { processSteps } from '../../data/content'
+import type { ProcessStepItem } from '../../data/content'
 import ProcessStep from '../processStep/ProcessStep'
 import './style.css'
 
-function ProcessSection() {
+type ProcessSectionProps = {
+  steps: ProcessStepItem[]
+}
+
+function ProcessSection({ steps }: ProcessSectionProps) {
   return (
     <section
       id="processo"
@@ -14,7 +18,7 @@ function ProcessSection() {
         Três etapas simples: entender, criar e compartilhar.
       </p>
       <div className="process-list">
-        {processSteps.map((step) => (
+        {steps.map((step) => (
           <ProcessStep key={step.id} step={step} />
         ))}
       </div>
