@@ -1,0 +1,36 @@
+.section-home {
+  background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+}
+
+.eyebrow {
+  margin: 0;
+  color: #93c5fd;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 36rem;
+}
+
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 0.5rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cta-link:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
