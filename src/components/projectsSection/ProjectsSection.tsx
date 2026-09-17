@@ -17,15 +17,18 @@ function ProjectsSection({ projects }: ProjectsSectionProps) {
       className="section section-projetos section-reveal"
       aria-labelledby="projetos-title"
     >
-      <p className="section-number">04</p>
-      <h2 id="projetos-title">Projetos</h2>
-      <p className="section-intro">
-        Exemplos de experiências e simulações alinhadas ao trabalho da Miniverso.
-      </p>
-      <div className="projects-grid">
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
+      <div className="section-inner section-inner-wide">
+        <p className="section-number">04</p>
+        <h2 id="projetos-title">Projetos</h2>
+        <p className="section-intro">
+          Exemplos de experiências e simulações alinhadas ao trabalho da
+          Miniverso.
+        </p>
+        <div className="projects-grid">
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
       </div>
     </section>
   )

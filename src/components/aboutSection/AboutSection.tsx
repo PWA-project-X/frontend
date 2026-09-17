@@ -16,13 +16,15 @@ function AboutSection({ company }: AboutSectionProps) {
       className="section section-sobre section-reveal"
       aria-labelledby="sobre-title"
     >
-      <p className="section-number">02</p>
-      <h2 id="sobre-title">Sobre</h2>
-      <p>{company.description}</p>
-      <p>{company.proposal}</p>
-      <p className="about-meta">
-        Projeto: <strong>{company.project}</strong> · {company.city}
-      </p>
+      <div className="section-inner">
+        <p className="section-number">02</p>
+        <h2 id="sobre-title">Sobre</h2>
+        <p>{company.description}</p>
+        <p>{company.proposal}</p>
+        <p className="about-meta">
+          Projeto: <strong>{company.project}</strong> · {company.city}
+        </p>
+      </div>
     </section>
   )
 }

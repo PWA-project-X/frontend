@@ -1,14 +1,22 @@
 .process-step {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1.35rem 0;
-  border-top: 1px solid var(--border);
-  transition: border-color 0.25s ease;
+  padding: 1.35rem 0 1.35rem 0.35rem;
 }
 
-.process-step:last-child {
-  border-bottom: 1px solid var(--border);
+.process-step::before {
+  content: '';
+  position: absolute;
+  left: -1.12rem;
+  top: 1.55rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
 }
 
 .process-step-number {
@@ -32,10 +40,4 @@
   font-size: 1rem;
   line-height: 1.55;
   max-width: 36rem;
-}
-
-@media (hover: hover) {
-  .process-step:hover {
-    border-top-color: var(--border-strong);
-  }
 }

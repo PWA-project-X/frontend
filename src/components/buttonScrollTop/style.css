@@ -7,22 +7,23 @@
   height: 3rem;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent), #2563eb);
-  color: #fff;
+  background: var(--surface-glass);
+  color: var(--accent-bright);
   font-size: 1.25rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 0 24px var(--glow);
+  backdrop-filter: blur(12px);
   transition:
     background 0.25s ease,
     transform 0.25s ease,
-    box-shadow 0.25s ease;
+    border-color 0.25s ease;
 }
 
 @media (hover: hover) {
   .btn-scroll-top:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 32px rgba(96, 165, 250, 0.55);
+    background: rgba(34, 211, 238, 0.12);
+    border-color: var(--accent-bright);
   }
 }
 
@@ -38,7 +39,6 @@
 @media (prefers-reduced-motion: reduce) {
   .btn-scroll-top {
     transition: none;
-    box-shadow: none;
   }
 
   .btn-scroll-top:hover {
