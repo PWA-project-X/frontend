@@ -1,0 +1,16 @@
+.section-sobre {
+  background: #0b1220;
+}
+
+.about-meta {
+  margin-top: 0.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  background: #1e293b;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+}
+
+.about-meta strong {
+  color: #f8fafc;
+}

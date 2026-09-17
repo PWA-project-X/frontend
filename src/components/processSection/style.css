@@ -1,0 +1,13 @@
+.section-processo {
+  background: #0b1220;
+}
+
+.section-intro {
+  margin: 0 0 0.75rem;
+}
+
+.process-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.25rem;
+}

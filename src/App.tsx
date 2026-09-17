@@ -1,53 +1,69 @@
-import ButtonHome from './components/buttonHome/ButtonHome'
-import ButtonNext from './components/buttonNext/ButtonNext'
-import ButtonPrev from './components/buttonPrev/ButtonPrev'
+import { useEffect, useState } from 'react'
+import { getCompany, getProcess, getServices } from './api/client'
+import Header from './components/header/Header'
+import HomeSection from './components/homeSection/HomeSection'
+import AboutSection from './components/aboutSection/AboutSection'
+import ServicesSection from './components/servicesSection/ServicesSection'
+import ProcessSection from './components/processSection/ProcessSection'
 import ButtonScrollTop from './components/buttonScrollTop/ButtonScrollTop'
+import {
+  companyFallback,
+  processStepsFallback,
+  servicesFallback,
+  type CompanyInfo,
+  type ProcessStepItem,
+  type ServiceItem,
+} from './data/content'
 import './App.css'
 
-const SECTION_IDS = ['home', 'recursos', 'sobre']
-
 function App() {
+  const [company, setCompany] = useState<CompanyInfo>(companyFallback)
+  const [services, setServices] = useState<ServiceItem[]>(servicesFallback)
+  const [steps, setSteps] = useState<ProcessStepItem[]>(processStepsFallback)
+  const [usingFallback, setUsingFallback] = useState(false)
+
+  useEffect(() => {
+    let cancelled = false
+
+    async function load() {
+      const [companyResult, servicesResult, processResult] = await Promise.all([
+        getCompany(),
+        getServices(),
+        getProcess(),
+      ])
+      if (!cancelled) {
+        setCompany(companyResult.data)
+        setServices(servicesResult.data)
+        setSteps(processResult.data)
+        setUsingFallback(
+          companyResult.fromFallback ||
+            servicesResult.fromFallback ||
+            processResult.fromFallback,
+        )
+      }
+    }
+
+    void load()
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   return (
     <div className="app">
-      <header className="topbar">
-        <strong className="brand">PWA Project X</strong>
-        <nav className="nav-actions" aria-label="Atalhos de navegação">
-          <ButtonHome targetId="home" />
-          <ButtonPrev sectionIds={SECTION_IDS} />
-          <ButtonNext sectionIds={SECTION_IDS} />
-        </nav>
-      </header>
+      <Header brand={company.name} />
+
+      {usingFallback ? (
+        <p className="api-fallback-notice" role="status">
+          Conteúdo local — API indisponível
+        </p>
+      ) : null}
 
       <main>
-        <section id="home" className="section section-home">
-          <h1>Aplicação web dinâmica + PWA</h1>
-          <p>
-            Scaffold inicial da disciplina: layout responsivo, componentes
-            organizados e suporte a funcionamento offline via Vite PWA.
-          </p>
-        </section>
-
-        <section id="recursos" className="section section-recursos">
-          <h2>Recursos principais</h2>
-          <ul>
-            <li>React + TypeScript + Vite</li>
-            <li>PWA com service worker e cache offline</li>
-            <li>Componentes com CSS separado por pasta</li>
-            <li>Atalhos para home, seção anterior e próxima</li>
-          </ul>
-        </section>
-
-        <section id="sobre" className="section section-sobre">
-          <h2>Próximos passos</h2>
-          <p>
-            Esta base será adaptada ao briefing do cliente. Por enquanto, o
-            foco é estrutura, navegação e instalação como PWA.
-          </p>
-          <p className="hint">
-            Para testar PWA de verdade: <code>npm run build</code> e depois{' '}
-            <code>npm run preview</code>.
-          </p>
-        </section>
+        <HomeSection company={company} />
+        <AboutSection company={company} />
+        <ServicesSection services={services} />
+        <ProcessSection steps={steps} />
       </main>
 
       <ButtonScrollTop />
