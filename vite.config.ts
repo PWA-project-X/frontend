@@ -10,9 +10,10 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
       manifest: {
-        name: 'PWA Project X',
-        short_name: 'PWA-X',
-        description: 'Aplicação web dinâmica e PWA — Programação Avançada para Web',
+        name: 'Portfólio Interno Miniverso',
+        short_name: 'Miniverso',
+        description:
+          'Portfólio interno da Miniverso — empresa, serviços e processo de trabalho.',
         theme_color: '#2563eb',
         background_color: '#0f172a',
         display: 'standalone',
@@ -55,6 +56,16 @@ export default defineConfig({
             handler: 'StaleWhileRevalidate',
             options: {
               cacheName: 'assets-cache',
+            },
+          },
+          {
+            urlPattern: ({ url }) =>
+              (url.hostname === 'localhost' || url.hostname === '127.0.0.1') &&
+              (url.pathname.startsWith('/api/') || url.pathname === '/health'),
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'api-cache',
+              networkTimeoutSeconds: 5,
             },
           },
         ],
