@@ -1,31 +1,42 @@
 .process-step {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1.25rem 0;
-  border-top: 1px solid #334155;
+  padding: 1.35rem 0 1.35rem 0.35rem;
 }
 
-.process-step:last-child {
-  border-bottom: 1px solid #334155;
+.process-step::before {
+  content: '';
+  position: absolute;
+  left: -1.12rem;
+  top: 1.55rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
 }
 
 .process-step-number {
-  color: #60a5fa;
+  color: var(--accent-bright);
+  font-family: var(--font-display);
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
 }
 
 .process-step-title {
   margin: 0;
-  color: #f8fafc;
-  font-size: 1.25rem;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
 }
 
 .process-step-description {
   margin: 0;
-  color: #cbd5e1;
+  color: var(--muted);
   font-size: 1rem;
   line-height: 1.55;
   max-width: 36rem;

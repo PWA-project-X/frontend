@@ -1,8 +1,9 @@
 .btn-prev {
-  background: #334155;
-  color: #fff;
+  border-color: var(--border);
+  color: var(--muted);
 }
 
 .btn-prev:hover {
-  background: #1e293b;
+  background: rgba(51, 65, 85, 0.35);
+  color: var(--text);
 }

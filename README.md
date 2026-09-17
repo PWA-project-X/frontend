@@ -38,6 +38,10 @@ O front usa `VITE_API_URL` (padrão `http://localhost:3001`) para buscar `/api/c
 4. **Projetos** — exemplos de experiências e simulações
 5. **Processo** — entender, criar e compartilhar
 
+## Direção visual (Orbital Clean)
+
+Interface futurista e limpa: tipografia **Syne** + **DM Sans**, tokens com accent ciano-água, hero full-bleed com marca em destaque, header priorizando navegação, ritmo entre seções, cards diferenciados (serviços com índice / projetos com chip), linha no processo e footer mínimo — sempre respeitando `prefers-reduced-motion`.
+
 ## PWA (produção / preview)
 
 ```bash
@@ -58,10 +62,15 @@ src/components/
   projectCard/     ProjectCard.tsx + style.css
   processSection/  ProcessSection.tsx + style.css
   processStep/     ProcessStep.tsx + style.css
+  footer/          SiteFooter.tsx + style.css
   buttonHome/      ButtonHome.tsx + style.css
   buttonPrev/      ButtonPrev.tsx + style.css
   buttonNext/      ButtonNext.tsx + style.css
   buttonScrollTop/ ButtonScrollTop.tsx + style.css
+src/styles/
+  tokens.css       Variáveis de design (Orbital Clean)
+src/hooks/
+  useRevealOnScroll.ts
 ```
 
 ## Scripts

@@ -11,6 +11,7 @@ import AboutSection from './components/aboutSection/AboutSection'
 import ServicesSection from './components/servicesSection/ServicesSection'
 import ProjectsSection from './components/projectsSection/ProjectsSection'
 import ProcessSection from './components/processSection/ProcessSection'
+import SiteFooter from './components/footer/SiteFooter'
 import ButtonScrollTop from './components/buttonScrollTop/ButtonScrollTop'
 import {
   companyFallback,
@@ -80,6 +81,7 @@ function App() {
         <ProcessSection steps={steps} />
       </main>
 
+      <SiteFooter brand={company.name} city={company.city} />
       <ButtonScrollTop />
     </div>
   )
