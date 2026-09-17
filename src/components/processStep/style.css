@@ -1,0 +1,32 @@
+.process-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid #334155;
+}
+
+.process-step:last-child {
+  border-bottom: 1px solid #334155;
+}
+
+.process-step-number {
+  color: #60a5fa;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.process-step-title {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 1.25rem;
+}
+
+.process-step-description {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 36rem;
+}
