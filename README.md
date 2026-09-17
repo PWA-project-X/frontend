@@ -22,7 +22,7 @@ Suba o backend em outro terminal (`npm run dev` no repositório backend) e depoi
 npm run dev
 ```
 
-O front usa `VITE_API_URL` (padrão `http://localhost:3001`) para buscar `/api/company`, `/api/services` e `/api/process`. Se a API estiver indisponível, o conteúdo local em `src/data/content.ts` é usado automaticamente e um aviso discreto aparece no topo.
+O front usa `VITE_API_URL` (padrão `http://localhost:3001`) para buscar `/api/company`, `/api/services`, `/api/projects` e `/api/process`. Se a API estiver indisponível, o conteúdo local em `src/data/content.ts` é usado automaticamente e um aviso discreto aparece no topo.
 
 ### Testar o fallback
 
@@ -35,7 +35,8 @@ O front usa `VITE_API_URL` (padrão `http://localhost:3001`) para buscar `/api/c
 1. **Início** — apresentação do projeto
 2. **Sobre** — proposta e contexto da empresa
 3. **Serviços** — cards com áreas de atuação
-4. **Processo** — entender, criar e compartilhar
+4. **Projetos** — exemplos de experiências e simulações
+5. **Processo** — entender, criar e compartilhar
 
 ## PWA (produção / preview)
 
@@ -53,6 +54,8 @@ src/components/
   aboutSection/    AboutSection.tsx + style.css
   servicesSection/ ServicesSection.tsx + style.css
   serviceCard/     ServiceCard.tsx + style.css
+  projectsSection/ ProjectsSection.tsx + style.css
+  projectCard/     ProjectCard.tsx + style.css
   processSection/  ProcessSection.tsx + style.css
   processStep/     ProcessStep.tsx + style.css
   buttonHome/      ButtonHome.tsx + style.css
@@ -87,6 +90,8 @@ src/components/
 | RNF05 | Componentes em arquivos separados |
 | RNF06–RNF09 | Scripts, PWA, navegação simples |
 | RNF10 | Conteúdo extraído (`src/data/content.ts` + API) |
+
+Extra: seção **Projetos** com `GET /api/projects` (expansão do portfólio).
 
 ## Backend
 

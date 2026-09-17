@@ -1,9 +1,11 @@
 import {
   companyFallback,
   processStepsFallback,
+  projectsFallback,
   servicesFallback,
   type CompanyInfo,
   type ProcessStepItem,
+  type ProjectItem,
   type ServiceItem,
 } from '../data/content'
 
@@ -46,5 +48,14 @@ export async function getProcess(): Promise<FetchResult<ProcessStepItem[]>> {
     return { data: payload.steps, fromFallback: false }
   } catch {
     return { data: processStepsFallback, fromFallback: true }
+  }
+}
+
+export async function getProjects(): Promise<FetchResult<ProjectItem[]>> {
+  try {
+    const payload = await fetchJson<{ projects: ProjectItem[] }>('/api/projects')
+    return { data: payload.projects, fromFallback: false }
+  } catch {
+    return { data: projectsFallback, fromFallback: true }
   }
 }
