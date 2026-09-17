@@ -1,4 +1,5 @@
 import type { CompanyInfo } from '../../data/content'
+import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
 import './style.css'
 
 type HomeSectionProps = {
@@ -6,8 +7,17 @@ type HomeSectionProps = {
 }
 
 function HomeSection({ company }: HomeSectionProps) {
+  const ref = useRevealOnScroll<HTMLElement>()
+
   return (
-    <section id="home" className="section section-home" aria-labelledby="home-title">
+    <section
+      ref={ref}
+      id="home"
+      className="section section-home section-reveal"
+      aria-labelledby="home-title"
+    >
+      <div className="home-glow" aria-hidden="true" />
+      <p className="section-number">01</p>
       <p className="eyebrow">{company.city}</p>
       <h1 id="home-title">{company.project}</h1>
       <p className="lead">

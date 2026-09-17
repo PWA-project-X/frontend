@@ -1,9 +1,5 @@
 .section-processo {
-  background: #0b1220;
-}
-
-.section-intro {
-  margin: 0 0 0.75rem;
+  background: var(--bg);
 }
 
 .process-list {

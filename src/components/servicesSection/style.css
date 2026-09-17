@@ -1,10 +1,6 @@
 .section-servicos {
-  background: #0f172a;
+  background: var(--bg);
   max-width: 960px;
-}
-
-.section-intro {
-  margin: 0 0 0.5rem;
 }
 
 .services-grid {

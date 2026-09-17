@@ -1,4 +1,5 @@
 import type { ProcessStepItem } from '../../data/content'
+import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
 import ProcessStep from '../processStep/ProcessStep'
 import './style.css'
 
@@ -7,12 +8,16 @@ type ProcessSectionProps = {
 }
 
 function ProcessSection({ steps }: ProcessSectionProps) {
+  const ref = useRevealOnScroll<HTMLElement>()
+
   return (
     <section
+      ref={ref}
       id="processo"
-      className="section section-processo"
+      className="section section-processo section-reveal"
       aria-labelledby="processo-title"
     >
+      <p className="section-number">05</p>
       <h2 id="processo-title">Processo</h2>
       <p className="section-intro">
         Três etapas simples: entender, criar e compartilhar.

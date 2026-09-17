@@ -38,6 +38,10 @@ O front usa `VITE_API_URL` (padrão `http://localhost:3001`) para buscar `/api/c
 4. **Projetos** — exemplos de experiências e simulações
 5. **Processo** — entender, criar e compartilhar
 
+## Direção visual (Orbital Clean)
+
+Interface futurista e limpa: tipografia **Syne** + **DM Sans**, tokens CSS, hero com mesh/aurora e grade técnica, glass no header/cards, edge-light e tilt sutil no hover, numeração editorial das seções e reveals no scroll — sempre respeitando `prefers-reduced-motion`.
+
 ## PWA (produção / preview)
 
 ```bash
@@ -62,6 +66,10 @@ src/components/
   buttonPrev/      ButtonPrev.tsx + style.css
   buttonNext/      ButtonNext.tsx + style.css
   buttonScrollTop/ ButtonScrollTop.tsx + style.css
+src/styles/
+  tokens.css       Variáveis de design (Orbital Clean)
+src/hooks/
+  useRevealOnScroll.ts
 ```
 
 ## Scripts
