@@ -60,8 +60,7 @@ export default defineConfig({
           },
           {
             urlPattern: ({ url }) =>
-              (url.hostname === 'localhost' || url.hostname === '127.0.0.1') &&
-              (url.pathname.startsWith('/api/') || url.pathname === '/health'),
+              url.pathname.startsWith('/api/') || url.pathname === '/health',
             handler: 'NetworkFirst',
             options: {
               cacheName: 'api-cache',

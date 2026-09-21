@@ -1,0 +1,28 @@
+name: Bug
+description: Comportamento incorreto no frontend
+title: "[bug] "
+labels: ["must"]
+body:
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento esperado
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportamento atual
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para reproduzir
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Ambiente
+      placeholder: "Chrome / mobile / npm run preview"

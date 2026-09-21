@@ -21,7 +21,8 @@ function ServicesSection({ services }: ServicesSectionProps) {
         <p className="section-number">03</p>
         <h2 id="servicos-title">Serviços</h2>
         <p className="section-intro">
-          Áreas de atuação da Miniverso em experiências imersivas e educação.
+          Áreas de atuação da Miniverso: conteúdo 3D, realidade virtual,
+          realidade aumentada e experiências imersivas.
         </p>
         <div className="services-grid">
           {services.map((service, index) => (

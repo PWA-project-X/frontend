@@ -2,6 +2,8 @@
 
 Aplicação web com **React + TypeScript + Vite** e suporte a **PWA** (`vite-plugin-pwa`) para o Portfólio Interno Miniverso.
 
+Documentação técnica: [`docs/`](docs/) · Contribuição: [`CONTRIBUTING.md`](CONTRIBUTING.md) · Changelog: [`CHANGELOG.md`](CHANGELOG.md)
+
 ## Pré-requisitos
 
 - Node.js
@@ -12,6 +14,7 @@ Aplicação web com **React + TypeScript + Vite** e suporte a **PWA** (`vite-plu
 
 ```bash
 npm install
+cp .env.example .env
 ```
 
 ## Desenvolvimento
@@ -23,6 +26,8 @@ npm run dev
 ```
 
 O front usa `VITE_API_URL` (padrão `http://localhost:3001`) para buscar `/api/company`, `/api/services`, `/api/projects` e `/api/process`. Se a API estiver indisponível, o conteúdo local em `src/data/content.ts` é usado automaticamente e um aviso discreto aparece no topo.
+
+Contrato da API: ver README do [backend](https://github.com/PWA-project-X/backend).
 
 ### Testar o fallback
 
@@ -36,7 +41,7 @@ O front usa `VITE_API_URL` (padrão `http://localhost:3001`) para buscar `/api/c
 2. **Sobre** — proposta e contexto da empresa
 3. **Serviços** — cards com áreas de atuação
 4. **Projetos** — exemplos de experiências e simulações
-5. **Processo** — entender, criar e compartilhar
+5. **Processo** — entender, criar e entregar
 
 ## Direção visual (Orbital Clean)
 
@@ -82,25 +87,28 @@ src/hooks/
 | `npm run preview` | Preview do build (teste PWA) |
 | `npm run lint` | ESLint |
 
-## Requisitos cobertos (v1)
+## Requisitos cobertos (escopo PDF v0.1)
 
-| ID | Descrição |
-| --- | --- |
-| RF01 | Página inicial com o nome do projeto |
-| RF02 | Seção Sobre |
-| RF03 | Informações gerais da proposta |
-| RF04–RF05 | Seção de serviços em cards |
-| RF06 | Seção de processo simplificado |
-| RF07–RF10 | Navegação por links, anterior, próxima e topo |
-| RF11 | Interface responsiva |
-| RF15 | Uso como PWA |
-| RNF01 | React + TypeScript + Vite |
-| RNF03–RNF04 | Responsivo e contraste adequado |
-| RNF05 | Componentes em arquivos separados |
-| RNF06–RNF09 | Scripts, PWA, navegação simples |
-| RNF10 | Conteúdo extraído (`src/data/content.ts` + API) |
+| ID | Descrição | Status |
+| --- | --- | --- |
+| RF01 | Página inicial com nome e proposta | Feito |
+| RF02 | Seção Sobre | Feito |
+| RF03 | Serviços em cards | Feito |
+| RF04 | Projetos selecionados | Feito |
+| RF05 | Seção de processo | Feito |
+| RF06 | Navegação por links entre seções | Feito |
+| RF07 | Retornar ao topo | Feito |
+| RF08 | Interface responsiva (mobile) | Feito |
+| RF09 | Dados via API | Feito |
+| RF10 | Fallback local | Feito |
+| RF12 | Configuração PWA | Feito |
+| RF13 | Artigos / insights | Não na v1 (opcional) |
+| RF14 | Contato visual | Não na v1 (opcional) |
+| RNF01 | React + TypeScript + Vite | Feito |
+| RNF03–RNF06 | Responsivo, contraste, componentes, scripts | Feito |
+| RNF08–RNF10 | Conteúdo em arquivos, assets leves, reduced-motion | Feito |
 
-Extra: seção **Projetos** com `GET /api/projects` (expansão do portfólio).
+Matriz completa: [`docs/TRACEABILITY.md`](docs/TRACEABILITY.md). Checklist: [`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md).
 
 ## Backend
 

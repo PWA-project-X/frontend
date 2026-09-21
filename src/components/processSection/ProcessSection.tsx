@@ -21,7 +21,7 @@ function ProcessSection({ steps }: ProcessSectionProps) {
         <p className="section-number">05</p>
         <h2 id="processo-title">Processo</h2>
         <p className="section-intro">
-          Três etapas simples: entender, criar e compartilhar.
+          Três etapas simples: entender, criar e entregar.
         </p>
         <div className="process-list">
           {steps.map((step) => (

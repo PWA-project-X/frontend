@@ -11,6 +11,8 @@ import AboutSection from './components/aboutSection/AboutSection'
 import ServicesSection from './components/servicesSection/ServicesSection'
 import ProjectsSection from './components/projectsSection/ProjectsSection'
 import ProcessSection from './components/processSection/ProcessSection'
+import InsightsSection from './components/insightsSection/InsightsSection'
+import ContactSection from './components/contactSection/ContactSection'
 import SiteFooter from './components/footer/SiteFooter'
 import ButtonScrollTop from './components/buttonScrollTop/ButtonScrollTop'
 import {
@@ -79,6 +81,8 @@ function App() {
         <ServicesSection services={services} />
         <ProjectsSection projects={projects} />
         <ProcessSection steps={steps} />
+        <InsightsSection />
+        <ContactSection />
       </main>
 
       <SiteFooter brand={company.name} city={company.city} />
