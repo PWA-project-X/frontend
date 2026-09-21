@@ -1,0 +1,35 @@
+name: Feature
+description: Nova funcionalidade ou seção no frontend
+title: "[feat] "
+labels: ["must"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Objetivo
+      description: O que deve ser entregue e por quê.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critérios de aceitação
+      description: Lista objetiva do que precisa funcionar.
+    validations:
+      required: true
+  - type: input
+    id: rf
+    attributes:
+      label: IDs RF/RNF (PDF)
+      placeholder: "RF03, RNF10"
+  - type: dropdown
+    id: moscow
+    attributes:
+      label: Prioridade MoSCoW
+      options:
+        - must
+        - should
+        - could
+        - wont
+    validations:
+      required: true

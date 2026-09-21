@@ -26,8 +26,8 @@ function HomeSection({ company }: HomeSectionProps) {
           Espaço único para apresentar a empresa, seus serviços e o processo de
           trabalho — simples, responsivo e instalável como PWA.
         </p>
-        <a className="cta-link" href="#sobre">
-          Conhecer a empresa
+        <a className="cta-link" href="#servicos">
+          Ver serviços
         </a>
       </div>
     </section>
