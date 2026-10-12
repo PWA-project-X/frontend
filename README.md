@@ -25,9 +25,21 @@ Suba o backend em outro terminal (`npm run dev` no repositório backend) e depoi
 npm run dev
 ```
 
-O front usa `VITE_API_URL` (padrão `http://localhost:3001`) para buscar `/api/company`, `/api/services`, `/api/projects` e `/api/process`. Se a API estiver indisponível, o conteúdo local em `src/data/content.ts` é usado automaticamente e um aviso discreto aparece no topo.
+O front usa `VITE_API_URL` (padrão `http://localhost:3001`) para buscar `/api/company`, `/api/services`, `/api/projects`, `/api/process` e `/api/insights`, com `credentials: 'include'` para sessão. Se a API estiver indisponível, o conteúdo local em `src/data/content.ts` preenche o portfólio público e um aviso discreto aparece no topo. Login e painel exigem a API no ar.
 
 Contrato da API: ver README do [backend](https://github.com/PWA-project-X/backend).
+
+### Rotas
+
+| Rota | Quem acessa |
+| --- | --- |
+| `/` | Portfólio público (acesso livre, sem login) |
+| `/login` | Visitante |
+| `/cadastro` | Visitante cria conta (`user`) |
+| `/conta` | Usuário autenticado (`user` ou `admin`) |
+| `/admin` | Apenas `admin` |
+
+Contas de seed (backend `.env`): admin e usuário demo. Qualquer pessoa também pode se cadastrar em `/cadastro`.
 
 ### Testar o fallback
 
@@ -42,6 +54,8 @@ Contrato da API: ver README do [backend](https://github.com/PWA-project-X/backen
 3. **Serviços** — cards com áreas de atuação
 4. **Projetos** — exemplos de experiências e simulações
 5. **Processo** — entender, criar e entregar
+6. **Insights** — notas curtas (editáveis no painel)
+7. **Contato** — formulário visual (sem envio)
 
 ## Direção visual (Orbital Clean)
 
@@ -57,6 +71,8 @@ npm run preview
 ## Estrutura de componentes
 
 ```
+src/pages/         PortfolioPage, LoginPage, AccountPage, AdminPage
+src/auth/          AuthProvider + useAuth
 src/components/
   header/          Header.tsx + style.css
   homeSection/     HomeSection.tsx + style.css
@@ -67,6 +83,9 @@ src/components/
   projectCard/     ProjectCard.tsx + style.css
   processSection/  ProcessSection.tsx + style.css
   processStep/     ProcessStep.tsx + style.css
+  insightsSection/ InsightsSection.tsx + style.css
+  contactSection/  ContactSection.tsx + style.css
+  protectedRoute/  ProtectedRoute.tsx
   footer/          SiteFooter.tsx + style.css
   buttonHome/      ButtonHome.tsx + style.css
   buttonPrev/      ButtonPrev.tsx + style.css

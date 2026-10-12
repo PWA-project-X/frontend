@@ -1,0 +1,331 @@
+.articles-page {
+  min-height: 100vh;
+}
+
+.articles-main {
+  width: min(52rem, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2.5rem 0 4rem;
+}
+
+.articles-main-wide {
+  width: min(72rem, calc(100% - 2rem));
+}
+
+.articles-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.articles-header h1 {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.articles-intro {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 40rem;
+}
+
+.articles-status,
+.articles-error {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+}
+
+.articles-error {
+  color: #fda4af;
+}
+
+.article-featured-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.25rem 1.35rem;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.article-featured-link:hover {
+  border-color: var(--accent-bright);
+  transform: translateY(-2px);
+}
+
+.article-featured-cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 0.55rem;
+  border: 1px solid var(--border);
+}
+
+.article-featured-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.article-featured-title {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.articles-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.articles-list-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.articles-list-item {
+  margin: 0;
+}
+
+.article-card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  padding: 1.25rem 1.35rem;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+@media (max-width: 720px) {
+  .article-featured-link {
+    grid-template-columns: 1fr;
+  }
+}
+
+.article-card-cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 0.55rem;
+  margin-bottom: 0.85rem;
+  border: 1px solid var(--border);
+}
+
+.article-card-link:hover {
+  border-color: var(--accent-bright);
+  transform: translateY(-2px);
+}
+
+.article-card-tag {
+  margin: 0 0 0.45rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-bright);
+}
+
+.article-card-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+.article-card-summary {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.article-card-meta {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.article-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.article-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.article-detail-tag {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-bright);
+}
+
+.article-detail h1 {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  line-height: 1.15;
+}
+
+.article-detail-summary {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.article-detail-meta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.article-detail-cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+}
+
+.article-detail-body {
+  margin: 0.5rem 0 0;
+  padding: 1.35rem 1.4rem;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.article-detail-body-html {
+  white-space: normal;
+  max-width: 100%;
+}
+
+.article-detail-body-html * {
+  max-width: 100%;
+}
+
+.article-detail-body-html p {
+  margin: 0 0 0.9rem;
+}
+
+.article-detail-body-html h2,
+.article-detail-body-html h3 {
+  margin: 1.25rem 0 0.5rem;
+  font-family: var(--font-display);
+  line-height: 1.25;
+}
+
+.article-detail-body-html ul,
+.article-detail-body-html ol {
+  margin: 0 0 0.9rem;
+  padding-left: 1.35rem;
+}
+
+.article-detail-body-html a {
+  color: var(--accent-bright);
+}
+
+.article-detail-body-html u {
+  text-decoration: underline;
+}
+
+.article-detail-body-html s {
+  text-decoration: line-through;
+}
+
+.article-detail-body-html mark {
+  background: rgba(34, 211, 238, 0.28);
+  color: inherit;
+  border-radius: 0.2rem;
+  padding: 0 0.15rem;
+}
+
+.article-detail-body-html blockquote {
+  margin: 0.85rem 0;
+  padding: 0.35rem 0 0.35rem 0.9rem;
+  border-left: 3px solid var(--accent-bright);
+  color: var(--muted);
+}
+
+.article-detail-body-html code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: rgba(2, 6, 23, 0.55);
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+  padding: 0.05rem 0.3rem;
+}
+
+.article-detail-body-html pre {
+  margin: 0.85rem 0;
+  padding: 0.9rem 1rem;
+  border-radius: 0.55rem;
+  background: rgba(2, 6, 23, 0.65);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.article-detail-body-html pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 0.88rem;
+}
+
+.article-detail-body-html hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 1.2rem 0;
+}
+
+.article-detail-body-html img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.6rem;
+  margin: 0.75rem 0;
+}
+
+.article-detail-body-html iframe {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+  border-radius: 0.6rem;
+  margin: 0.75rem 0;
+}

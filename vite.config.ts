@@ -4,6 +4,13 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    proxy: {
+      '/api': 'http://localhost:3001',
+      '/uploads': 'http://localhost:3001',
+      '/health': 'http://localhost:3001',
+    },
+  },
   plugins: [
     react(),
     VitePWA({

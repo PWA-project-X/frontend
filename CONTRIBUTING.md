@@ -30,7 +30,7 @@ Exemplos: `feat/insights-section`, `fix/header-active-link`, `docs/traceability`
 ### Definition of Ready
 
 - Issue ou descrição clara do objetivo.
-- Escopo alinhado ao PDF (nada de admin/DB/auth na v1).
+- Escopo alinhado ao PDF + fatia auth/admin (ADR 0004). Cadastro livre de usuário está no escopo; envio real de contato continua fora.
 - Como testar definido.
 
 ### Definition of Done

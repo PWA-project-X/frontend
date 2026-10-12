@@ -1,9 +1,0 @@
-.btn-prev {
-  border-color: var(--border);
-  color: var(--muted);
-}
-
-.btn-prev:hover {
-  background: rgba(51, 65, 85, 0.35);
-  color: var(--text);
-}

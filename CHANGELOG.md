@@ -13,10 +13,13 @@ O formato segue a ideia de [Keep a Changelog](https://keepachangelog.com/pt-BR/1
 - Script `npm run lint` na pasta de orquestração.
 - `.env` ignorado no frontend.
 - Seções visuais **Insights** (RF13) e **Contato** (RF14), sem CMS nem envio real.
+- React Router com `/login`, `/conta` e `/admin` (RF15–RF19).
+- Sessão via cookie; header com Entrar / conta / painel / sair.
 
 ### Changed
 
 - Serviços alinhados ao PDF: Conteúdo 3D, Realidade Virtual, Realidade Aumentada, Experiências imersivas.
+- Insights passam a preferir `GET /api/insights` com fallback local.
 - Etapa 03 do processo: Compartilhar → **Entregar**.
 - Copy do Sobre enfatiza tecnologia, design, narrativa e experiências imersivas.
 - CTA da Home aponta para `#servicos`.

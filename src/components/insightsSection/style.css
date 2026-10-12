@@ -2,11 +2,57 @@
   background: var(--bg-elevated, var(--bg));
 }
 
+.insights-empty {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+.insight-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 1.25rem 1.5rem;
+  margin-top: 0.35rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-glass);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.insight-featured-cover {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 0.55rem;
+  border: 1px solid var(--border);
+}
+
+.insight-featured-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.insight-featured-title {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+  line-height: 1.25;
+}
+
 .insights-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
-  margin-top: 0.35rem;
+  margin-top: 1rem;
 }
 
 .insight-card {
@@ -51,8 +97,51 @@
   line-height: 1.55;
 }
 
+.insight-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.insight-card-cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 0.15rem;
+  border: 1px solid var(--border);
+}
+
+.insight-card-cta {
+  margin-top: auto;
+  padding-top: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-bright);
+}
+
+.insights-all {
+  margin: 1.35rem 0 0;
+}
+
+.insights-all a {
+  color: var(--accent-bright);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.insights-all a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .insight-featured {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (hover: hover) {
-  .insight-card:hover {
+  .insight-card:hover,
+  .insight-featured:hover {
     border-color: var(--border-strong);
     background: rgba(18, 28, 45, 0.8);
     box-shadow:
@@ -63,11 +152,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .insight-card {
+  .insight-card,
+  .insight-featured {
     transition: none;
   }
 
-  .insight-card:hover {
+  .insight-card:hover,
+  .insight-featured:hover {
     transform: none;
   }
 }

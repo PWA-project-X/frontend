@@ -1,0 +1,259 @@
+.article-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.article-editor.is-disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.article-editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.75rem;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(2, 6, 23, 0.45);
+}
+
+.article-editor-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.28rem;
+  padding-right: 0.75rem;
+  border-right: 1px solid var(--border);
+}
+
+.article-editor-group:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.article-editor-icon-btn {
+  appearance: none;
+  width: 2rem;
+  height: 2rem;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 0.45rem;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.86rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.article-editor-svg {
+  display: block;
+}
+
+.article-editor-letter {
+  font-size: 0.92rem;
+  line-height: 1;
+}
+
+.article-editor-icon-btn:hover:not(:disabled) {
+  border-color: var(--border);
+  background: rgba(34, 211, 238, 0.08);
+}
+
+.article-editor-icon-btn.is-active {
+  border-color: rgba(34, 211, 238, 0.45);
+  background: rgba(34, 211, 238, 0.16);
+  color: var(--accent-bright);
+}
+
+.article-editor-icon-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.article-editor-mark-u {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.article-editor-mark-s {
+  text-decoration: line-through;
+  font-weight: 700;
+}
+
+.article-editor-mark-hl {
+  font-weight: 700;
+  background: rgba(34, 211, 238, 0.28);
+  border-radius: 0.2rem;
+  padding: 0 0.15rem;
+}
+
+.article-editor-select-wrap {
+  display: inline-flex;
+  margin: 0;
+}
+
+.article-editor-select {
+  appearance: none;
+  min-width: 7.25rem;
+  height: 2rem;
+  padding: 0 1.6rem 0 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  background:
+    linear-gradient(45deg, transparent 50%, var(--muted) 50%) calc(100% - 14px)
+      11px / 5px 5px no-repeat,
+    linear-gradient(135deg, var(--muted) 50%, transparent 50%) calc(100% - 9px)
+      11px / 5px 5px no-repeat,
+    rgba(2, 6, 23, 0.35);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.article-editor-select:focus {
+  outline: 1px solid var(--accent-bright);
+  outline-offset: 1px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.article-editor-content {
+  min-height: 18rem;
+  padding: 1rem 1.1rem 1.35rem;
+}
+
+.article-editor-content .tiptap {
+  outline: none;
+  min-height: 16rem;
+  color: var(--text);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.article-editor-content .tiptap p {
+  margin: 0 0 0.85rem;
+}
+
+.article-editor-content .tiptap h2,
+.article-editor-content .tiptap h3 {
+  margin: 1.2rem 0 0.55rem;
+  font-family: var(--font-display);
+  line-height: 1.25;
+}
+
+.article-editor-content .tiptap ul,
+.article-editor-content .tiptap ol {
+  margin: 0 0 0.85rem;
+  padding-left: 1.35rem;
+}
+
+.article-editor-content .tiptap a {
+  color: var(--accent-bright);
+}
+
+.article-editor-content .tiptap u {
+  text-decoration: underline;
+}
+
+.article-editor-content .tiptap s {
+  text-decoration: line-through;
+}
+
+.article-editor-content .tiptap mark {
+  background: rgba(34, 211, 238, 0.28);
+  color: inherit;
+  border-radius: 0.2rem;
+  padding: 0 0.15rem;
+}
+
+.article-editor-content .tiptap blockquote {
+  margin: 0.85rem 0;
+  padding: 0.35rem 0 0.35rem 0.9rem;
+  border-left: 3px solid var(--accent-bright);
+  color: var(--muted);
+}
+
+.article-editor-content .tiptap code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: rgba(2, 6, 23, 0.55);
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+  padding: 0.05rem 0.3rem;
+}
+
+.article-editor-content .tiptap pre {
+  margin: 0.85rem 0;
+  padding: 0.9rem 1rem;
+  border-radius: 0.55rem;
+  background: rgba(2, 6, 23, 0.65);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.article-editor-content .tiptap pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 0.88rem;
+}
+
+.article-editor-content .tiptap hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 1.2rem 0;
+}
+
+.article-editor-content .tiptap img,
+.article-editor-content .tiptap .article-editor-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.6rem;
+  margin: 0.75rem 0;
+}
+
+.article-editor-content .tiptap iframe,
+.article-editor-content .tiptap .article-editor-video {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+  border-radius: 0.6rem;
+  margin: 0.75rem 0;
+}
+
+.article-editor-content .tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: var(--muted);
+  pointer-events: none;
+  height: 0;
+}
+
+@media (max-width: 720px) {
+  .article-editor-group {
+    border-right: 0;
+    padding-right: 0;
+  }
+}

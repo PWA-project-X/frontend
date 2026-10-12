@@ -36,6 +36,12 @@
   background: var(--accent-soft);
 }
 
+.btn-nav.is-active {
+  border-color: var(--accent-bright);
+  color: var(--text);
+  background: var(--accent-soft);
+}
+
 .section {
   position: relative;
   min-height: 85vh;

@@ -31,6 +31,13 @@ export type InsightItem = {
   title: string
   summary: string
   tag: string
+  coverUrl?: string
+}
+
+export type ArticleItem = InsightItem & {
+  body: string
+  coverUrl?: string
+  createdAt: string
 }
 
 export const companyFallback: CompanyInfo = {
@@ -165,6 +172,5 @@ export const NAV_LINKS = [
   { id: 'servicos', label: 'Serviços' },
   { id: 'projetos', label: 'Projetos' },
   { id: 'processo', label: 'Processo' },
-  { id: 'insights', label: 'Insights' },
   { id: 'contato', label: 'Contato' },
 ] as const
