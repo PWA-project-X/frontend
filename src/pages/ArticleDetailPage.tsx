@@ -25,11 +25,7 @@ function ArticleDetailPage() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    if (!id) {
-      setError('Artigo não encontrado')
-      setLoading(false)
-      return
-    }
+    if (!id) return
 
     let cancelled = false
 
@@ -69,7 +65,13 @@ function ArticleDetailPage() {
           </Link>
         </div>
 
-        {loading ? (
+        {!id ? (
+          <p className="articles-error" role="alert">
+            Artigo não encontrado
+          </p>
+        ) : null}
+
+        {id && loading ? (
           <p className="articles-status" role="status">
             Carregando artigo…
           </p>

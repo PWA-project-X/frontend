@@ -103,6 +103,10 @@ export async function getProjects(): Promise<FetchResult<ProjectItem[]>> {
   }
 }
 
+export async function getProject(id: string): Promise<ProjectItem> {
+  return fetchJson<ProjectItem>(`/api/projects/${id}`)
+}
+
 export async function getInsights(): Promise<FetchResult<InsightItem[]>> {
   try {
     const payload = await fetchJson<{ insights: InsightItem[] }>('/api/insights')

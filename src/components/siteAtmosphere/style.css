@@ -1,0 +1,127 @@
+.site-atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bg);
+}
+
+.site-atmosphere-aurora {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  will-change: transform;
+}
+
+.site-atmosphere-aurora-a {
+  width: min(72vw, 38rem);
+  height: min(72vw, 38rem);
+  top: -12%;
+  left: -8%;
+  background: rgba(34, 211, 238, 0.22);
+  animation: atmosphere-drift-a 22s ease-in-out infinite alternate;
+}
+
+.site-atmosphere-aurora-b {
+  width: min(64vw, 34rem);
+  height: min(64vw, 34rem);
+  top: 8%;
+  right: -10%;
+  background: rgba(59, 130, 246, 0.2);
+  animation: atmosphere-drift-b 28s ease-in-out infinite alternate;
+}
+
+.site-atmosphere-aurora-c {
+  width: min(58vw, 30rem);
+  height: min(58vw, 30rem);
+  bottom: -18%;
+  left: 28%;
+  background: rgba(34, 211, 238, 0.12);
+  animation: atmosphere-drift-c 18s ease-in-out infinite alternate;
+}
+
+.site-atmosphere-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.22) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: 0 0;
+  mask-image: radial-gradient(
+    ellipse 85% 70% at 50% 30%,
+    rgba(0, 0, 0, 0.85),
+    transparent 78%
+  );
+  animation: atmosphere-grid-shift 40s linear infinite;
+}
+
+.site-atmosphere-spot {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 22rem at var(--spot-x, 50%) var(--spot-y, 40%),
+    rgba(34, 211, 238, 0.14),
+    transparent 68%
+  );
+  transition: opacity 0.35s ease;
+}
+
+@keyframes atmosphere-drift-a {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(12%, 18%, 0) scale(1.12);
+  }
+}
+
+@keyframes atmosphere-drift-b {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(-14%, 12%, 0) scale(1.08);
+  }
+}
+
+@keyframes atmosphere-drift-c {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(10%, -16%, 0) scale(1.15);
+  }
+}
+
+@keyframes atmosphere-grid-shift {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 56px 56px;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .site-atmosphere-spot {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-atmosphere-aurora,
+  .site-atmosphere-grid {
+    animation: none;
+  }
+
+  .site-atmosphere-spot {
+    transition: none;
+  }
+}

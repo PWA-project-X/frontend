@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  height: 100%;
+  max-width: 22rem;
+  width: 100%;
+  margin-inline: auto;
   padding: 1.3rem;
   border-radius: var(--radius-card);
   background: rgba(8, 14, 26, 0.55);
@@ -13,6 +17,17 @@
     box-shadow 0.3s ease,
     transform 0.3s ease,
     background 0.3s ease;
+}
+
+.project-card-cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 0.55rem;
+  border: 1px solid var(--border);
+  margin: 0 0 0.15rem;
+  background: rgba(2, 6, 23, 0.35);
 }
 
 .project-card-category {
@@ -39,9 +54,37 @@
 
 .project-card-summary {
   margin: 0;
+  flex: 1;
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.55;
+}
+
+.project-tech-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.project-tech-chip {
+  margin: 0;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(2, 6, 23, 0.35);
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.project-card-link {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  text-decoration: none;
 }
 
 @media (hover: hover) {

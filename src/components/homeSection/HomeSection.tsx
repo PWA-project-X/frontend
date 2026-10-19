@@ -16,7 +16,6 @@ function HomeSection({ company }: HomeSectionProps) {
       className="section section-home section-reveal"
       aria-labelledby="home-title"
     >
-      <div className="home-glow" aria-hidden="true" />
       <div className="section-inner home-inner">
         <p className="section-number">01</p>
         <p className="eyebrow">{company.city}</p>
