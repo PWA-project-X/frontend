@@ -18,6 +18,8 @@ import {
   adminUpdateProcess,
   adminUpdateProject,
   adminUpdateService,
+  adminUploadImage,
+  mediaUrl,
   type AuthUser,
   type UserRole,
 } from '../api/client'
@@ -54,6 +56,11 @@ function AdminPage() {
   const [projects, setProjects] = useState<ProjectItem[]>([])
   const [steps, setSteps] = useState<ProcessStepItem[]>([])
   const [users, setUsers] = useState<AuthUser[]>([])
+  const [projectCoverUrl, setProjectCoverUrl] = useState('')
+  const [projectEditId, setProjectEditId] = useState('')
+  const [uploadingCover, setUploadingCover] = useState(false)
+
+  const featuredCount = projects.filter((item) => item.featured).length
 
   const flash = useCallback((text: string) => {
     setMessage(text)
@@ -130,25 +137,57 @@ function AdminPage() {
     }
   }
 
+  const resetProjectForm = (form: HTMLFormElement) => {
+    form.reset()
+    setProjectCoverUrl('')
+    setProjectEditId('')
+    const featured = form.elements.namedItem('featured')
+    if (featured instanceof HTMLInputElement) featured.checked = false
+  }
+
+  const uploadProjectCover = async (file: File | undefined) => {
+    if (!file) return
+    setUploadingCover(true)
+    setError(null)
+    try {
+      const url = await adminUploadImage(file)
+      setProjectCoverUrl(url)
+      flash('Capa enviada')
+    } catch (err) {
+      fail(err)
+    } finally {
+      setUploadingCover(false)
+    }
+  }
+
   const saveProject = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const form = event.currentTarget
     const data = new FormData(form)
+    const technologies = String(data.get('technologies') || '')
+      .split(',')
+      .map((item) => item.trim())
+      .filter(Boolean)
+    const sortRaw = String(data.get('sortOrder') || '').trim()
     const payload = {
       title: String(data.get('title') || ''),
       summary: String(data.get('summary') || ''),
       category: String(data.get('category') || ''),
+      description: String(data.get('description') || ''),
+      coverUrl: projectCoverUrl,
+      technologies,
+      featured: data.get('featured') === 'on',
+      sortOrder: sortRaw === '' ? 1 : Number(sortRaw),
     }
-    const editId = String(data.get('editId') || '')
     try {
-      if (editId) {
-        await adminUpdateProject(editId, payload)
+      if (projectEditId) {
+        await adminUpdateProject(projectEditId, payload)
         flash('Projeto atualizado')
       } else {
         await adminCreateProject(payload)
         flash('Projeto criado')
       }
-      form.reset()
+      resetProjectForm(form)
       setProjects(await adminListProjects())
     } catch (err) {
       fail(err)
@@ -386,12 +425,22 @@ function AdminPage() {
 
         {tab === 'projects' ? (
           <div className="admin-panel">
+            {featuredCount < 3 || featuredCount > 6 ? (
+              <p className="admin-error" role="status">
+                A página principal deve exibir entre 3 e 6 projetos em destaque.
+                Agora há {featuredCount}.
+              </p>
+            ) : (
+              <p className="admin-flash" role="status">
+                {featuredCount} projetos em destaque na página principal.
+              </p>
+            )}
             <form
               id="project-form"
               className="contact-form admin-form"
               onSubmit={saveProject}
             >
-              <input type="hidden" name="editId" defaultValue="" />
+              <input type="hidden" name="editId" value={projectEditId} readOnly />
               <label className="contact-field">
                 <span>Título</span>
                 <input name="title" required />
@@ -404,6 +453,58 @@ function AdminPage() {
                 <span>Resumo</span>
                 <textarea name="summary" rows={3} required />
               </label>
+              <label className="contact-field contact-field-full">
+                <span>Descrição completa</span>
+                <textarea name="description" rows={5} required />
+              </label>
+              <label className="contact-field contact-field-full">
+                <span>Tecnologias (separadas por vírgula)</span>
+                <input
+                  name="technologies"
+                  placeholder="Unity, VR, C#"
+                />
+              </label>
+              <label className="contact-field">
+                <span>Ordem de exibição</span>
+                <input name="sortOrder" type="number" min={1} defaultValue={1} />
+              </label>
+              <label className="contact-field admin-checkbox-field">
+                <span>Aparecer em destaque</span>
+                <input name="featured" type="checkbox" />
+              </label>
+              <div className="contact-field contact-field-full admin-cover-field">
+                <span>Capa / imagem</span>
+                {projectCoverUrl ? (
+                  <img
+                    className="admin-cover-preview"
+                    src={mediaUrl(projectCoverUrl)}
+                    alt=""
+                  />
+                ) : null}
+                <div className="admin-cover-actions">
+                  <label className="btn-nav admin-file-label">
+                    {uploadingCover ? 'Enviando…' : projectCoverUrl ? 'Trocar capa' : 'Enviar capa'}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      disabled={uploadingCover}
+                      onChange={(e) => {
+                        void uploadProjectCover(e.target.files?.[0])
+                        e.currentTarget.value = ''
+                      }}
+                    />
+                  </label>
+                  {projectCoverUrl ? (
+                    <button
+                      type="button"
+                      className="btn-nav"
+                      onClick={() => setProjectCoverUrl('')}
+                    >
+                      Remover capa
+                    </button>
+                  ) : null}
+                </div>
+              </div>
               <button type="submit" className="contact-submit">
                 Salvar projeto
               </button>
@@ -415,6 +516,10 @@ function AdminPage() {
                     <strong>
                       {item.title}{' '}
                       <span className="admin-tag">{item.category}</span>
+                      {item.featured ? (
+                        <span className="admin-tag">Destaque</span>
+                      ) : null}
+                      <span className="admin-tag">Ordem {item.sortOrder}</span>
                     </strong>
                     <p>{item.summary}</p>
                   </div>
@@ -422,14 +527,25 @@ function AdminPage() {
                     <button
                       type="button"
                       className="btn-nav"
-                      onClick={() =>
+                      onClick={() => {
+                        setProjectEditId(item.id)
                         fillForm('project-form', {
-                          editId: item.id,
                           title: item.title,
                           summary: item.summary,
                           category: item.category,
+                          description: item.description,
+                          technologies: (item.technologies || []).join(', '),
+                          sortOrder: String(item.sortOrder ?? 1),
                         })
-                      }
+                        const form = document.getElementById(
+                          'project-form',
+                        ) as HTMLFormElement | null
+                        const featured = form?.elements.namedItem('featured')
+                        if (featured instanceof HTMLInputElement) {
+                          featured.checked = Boolean(item.featured)
+                        }
+                        setProjectCoverUrl(item.coverUrl || '')
+                      }}
                     >
                       Editar
                     </button>

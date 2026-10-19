@@ -32,8 +32,31 @@ function AdminArticlesPage() {
   }, [])
 
   useEffect(() => {
-    void load()
-  }, [load])
+    let cancelled = false
+
+    async function loadArticles() {
+      try {
+        const data = await adminListInsights()
+        if (!cancelled) {
+          setArticles(data)
+          setError(null)
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setError(
+            err instanceof Error ? err.message : 'Falha ao carregar artigos',
+          )
+        }
+      } finally {
+        if (!cancelled) setLoading(false)
+      }
+    }
+
+    void loadArticles()
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   const remove = async (id: string, title: string) => {
     if (!window.confirm(`Remover o artigo “${title}”?`)) return

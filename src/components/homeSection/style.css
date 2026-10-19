@@ -1,34 +1,5 @@
 .section-home {
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 90% 70% at 12% 18%, rgba(34, 211, 238, 0.16), transparent 55%),
-    radial-gradient(ellipse 70% 55% at 88% 28%, rgba(59, 130, 246, 0.14), transparent 52%),
-    radial-gradient(ellipse 55% 40% at 48% 95%, rgba(34, 211, 238, 0.08), transparent 55%),
-    linear-gradient(180deg, #070b14 0%, #0c1220 100%);
-}
-
-.section-home::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.2;
-  background-image:
-    linear-gradient(rgba(148, 163, 184, 0.14) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.14) 1px, transparent 1px);
-  background-size: 52px 52px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 88%);
-}
-
-.home-glow {
-  position: absolute;
-  width: min(42vw, 26rem);
-  height: min(42vw, 26rem);
-  top: 8%;
-  right: 4%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.16), transparent 70%);
-  pointer-events: none;
 }
 
 .home-inner {

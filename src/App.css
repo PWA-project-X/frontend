@@ -1,6 +1,8 @@
 .app {
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
-  background: var(--bg);
+  background: transparent;
 }
 
 .api-fallback-notice {
@@ -117,19 +119,6 @@
 .section-intro {
   margin: 0 0 0.35rem;
   max-width: 38rem;
-}
-
-.section-with-grid::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.12;
-  background-image:
-    linear-gradient(rgba(148, 163, 184, 0.2) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.2) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 90%);
 }
 
 @supports (animation-timeline: view()) {

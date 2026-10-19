@@ -1,7 +1,3 @@
-.section-insights {
-  background: var(--bg-elevated, var(--bg));
-}
-
 .insights-empty {
   margin: 0.35rem 0 0;
   color: var(--muted);
