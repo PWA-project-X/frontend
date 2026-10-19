@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../../auth/useAuth'
 import { NAV_LINKS, SECTION_IDS } from '../../data/content'
 import './style.css'
+
+const TOPBAR_MINIMIZED_KEY = 'topbar-minimized'
 
 type HeaderProps = {
   brand: string
@@ -10,12 +12,26 @@ type HeaderProps = {
 }
 
 function Header({ brand, showSectionNav = false }: HeaderProps) {
-  const { user, loading, logout } = useAuth()
-  const navigate = useNavigate()
+  const { user, loading } = useAuth()
   const location = useLocation()
   const [activeId, setActiveId] = useState<string>(SECTION_IDS[0])
+  const [minimized, setMinimized] = useState(() => {
+    try {
+      return sessionStorage.getItem(TOPBAR_MINIMIZED_KEY) === '1'
+    } catch {
+      return false
+    }
+  })
   const onPortfolio = location.pathname === '/'
   const onBlog = location.pathname.startsWith('/artigos')
+
+  useEffect(() => {
+    try {
+      sessionStorage.setItem(TOPBAR_MINIMIZED_KEY, minimized ? '1' : '0')
+    } catch {
+      /* ignore storage errors */
+    }
+  }, [minimized])
 
   useEffect(() => {
     if (!showSectionNav || !onPortfolio) return
@@ -49,20 +65,15 @@ function Header({ brand, showSectionNav = false }: HeaderProps) {
     return () => observer.disconnect()
   }, [showSectionNav, onPortfolio])
 
-  const handleLogout = async () => {
-    await logout()
-    navigate('/')
+  const toggleMinimized = () => {
+    setMinimized((current) => !current)
   }
 
   return (
-    <header className="topbar">
+    <header className={`topbar${minimized ? ' is-minimized' : ''}`}>
       <div className="topbar-main">
-        <Link to="/" className="brand">
-          {brand}
-        </Link>
-
         {showSectionNav && onPortfolio ? (
-          <nav className="nav-links" aria-label="Seções principais">
+          <nav className="nav-links" aria-label="Seções principais" hidden={minimized}>
             {NAV_LINKS.map((link) => {
               const isActive = activeId === link.id
               return (
@@ -80,15 +91,36 @@ function Header({ brand, showSectionNav = false }: HeaderProps) {
         ) : null}
       </div>
 
-      <Link
-        to="/artigos"
-        className={`topbar-blog${onBlog ? ' is-active' : ''}`}
-        aria-current={onBlog ? 'page' : undefined}
-      >
-        Blog
-      </Link>
+      <div className="topbar-center">
+        <button
+          type="button"
+          className="topbar-toggle"
+          aria-expanded={!minimized}
+          onClick={toggleMinimized}
+        >
+          <span className="visually-hidden">
+            {minimized ? 'Expandir menu' : 'Minimizar menu'}
+          </span>
+          <span className="topbar-toggle-icon" aria-hidden="true" />
+        </button>
+        <Link
+          to="/"
+          className={`topbar-title${onPortfolio && !minimized ? ' is-active' : ''}`}
+          aria-current={onPortfolio && !minimized ? 'page' : undefined}
+        >
+          {brand}
+        </Link>
+      </div>
 
-      <nav className="nav-actions" aria-label="Conta e atalhos">
+      <nav className="nav-actions" aria-label="Conta e atalhos" hidden={minimized}>
+        <Link
+          className={`btn-nav${onBlog ? ' is-active' : ''}`}
+          to="/artigos"
+          aria-current={onBlog ? 'page' : undefined}
+        >
+          Blog
+        </Link>
+
         {!loading && !user ? (
           <>
             <Link className="btn-nav" to="/cadastro">
@@ -115,9 +147,6 @@ function Header({ brand, showSectionNav = false }: HeaderProps) {
                 </Link>
               </>
             ) : null}
-            <button type="button" className="btn-nav" onClick={handleLogout}>
-              Sair
-            </button>
           </>
         ) : null}
       </nav>
