@@ -37,6 +37,14 @@ function RegisterPage() {
       <Header brand="Miniverso" />
       <main className="auth-main">
         <section className="auth-card" aria-labelledby="register-title">
+          <img
+            className="auth-mark"
+            src="/brand/isotipo-sm.png"
+            alt=""
+            width={80}
+            height={46}
+            decoding="async"
+          />
           <p className="section-number">Acesso</p>
           <h1 id="register-title">Criar conta</h1>
           <p className="auth-intro">

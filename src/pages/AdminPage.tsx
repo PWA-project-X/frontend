@@ -31,6 +31,7 @@ import type {
   ProjectItem,
   ServiceItem,
 } from '../data/content'
+import { confirmRemove } from '../utils/confirmRemove'
 import './adminPage.css'
 import './authPages.css'
 import '../components/contactSection/style.css'
@@ -405,6 +406,7 @@ function AdminPage() {
                       type="button"
                       className="btn-nav"
                       onClick={async () => {
+                        if (!confirmRemove(`o serviço “${item.title}”`)) return
                         try {
                           await adminDeleteService(item.id)
                           setServices(await adminListServices())
@@ -498,7 +500,10 @@ function AdminPage() {
                     <button
                       type="button"
                       className="btn-nav"
-                      onClick={() => setProjectCoverUrl('')}
+                      onClick={() => {
+                        if (!confirmRemove('a capa')) return
+                        setProjectCoverUrl('')
+                      }}
                     >
                       Remover capa
                     </button>
@@ -553,6 +558,7 @@ function AdminPage() {
                       type="button"
                       className="btn-nav"
                       onClick={async () => {
+                        if (!confirmRemove(`o projeto “${item.title}”`)) return
                         try {
                           await adminDeleteProject(item.id)
                           setProjects(await adminListProjects())
@@ -623,6 +629,7 @@ function AdminPage() {
                       type="button"
                       className="btn-nav"
                       onClick={async () => {
+                        if (!confirmRemove(`a etapa “${item.title}”`)) return
                         try {
                           await adminDeleteProcess(item.id)
                           setSteps(await adminListProcess())
@@ -683,6 +690,7 @@ function AdminPage() {
                       className="btn-nav"
                       disabled={item.id === user?.id}
                       onClick={async () => {
+                        if (!confirmRemove(`o usuário “${item.name}”`)) return
                         try {
                           await adminDeleteUser(item.id)
                           setUsers(await adminListUsers())

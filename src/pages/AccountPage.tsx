@@ -51,7 +51,11 @@ function AccountPage() {
                 Abrir painel
               </Link>
             ) : null}
-            <button type="button" className="btn-nav" onClick={handleLogout}>
+            <button
+              type="button"
+              className="btn-nav account-logout"
+              onClick={handleLogout}
+            >
               Sair
             </button>
           </div>

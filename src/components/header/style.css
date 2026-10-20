@@ -32,20 +32,24 @@
 }
 
 .topbar-title {
-  color: var(--muted);
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  padding: 0.35rem 0.15rem;
-  transition: color 0.2s ease;
+  padding: 0.2rem 0.15rem;
+  opacity: 0.88;
+  transition: opacity 0.2s ease;
 }
 
 .topbar-title:hover,
 .topbar-title.is-active {
-  color: var(--accent-bright);
+  opacity: 1;
+}
+
+.topbar-logo {
+  display: block;
+  height: 1.75rem;
+  width: auto;
+  max-width: min(42vw, 10.5rem);
 }
 
 .brand {

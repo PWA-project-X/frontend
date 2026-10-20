@@ -108,7 +108,16 @@ function Header({ brand, showSectionNav = false }: HeaderProps) {
           className={`topbar-title${onPortfolio && !minimized ? ' is-active' : ''}`}
           aria-current={onPortfolio && !minimized ? 'page' : undefined}
         >
-          {brand}
+          <img
+            className="topbar-logo"
+            src="/brand/logo-white-horizontal.png"
+            srcSet="/brand/logo-white-horizontal.png 1x, /brand/logo-white-horizontal@2x.png 2x"
+            alt=""
+            width={168}
+            height={28}
+            decoding="async"
+          />
+          <span className="visually-hidden">{brand}</span>
         </Link>
       </div>
 

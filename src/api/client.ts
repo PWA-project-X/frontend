@@ -296,6 +296,29 @@ export async function adminUpdateInsight(
   })
 }
 
+export async function adminUpdateInsightPlacement(
+  id: string,
+  data: { showOnHome?: boolean; archived?: boolean },
+): Promise<ArticleItem> {
+  return fetchJson<ArticleItem>(`/api/admin/insights/${id}/placement`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  })
+}
+
+export async function adminReorderHomeInsights(
+  ids: string[],
+): Promise<ArticleItem[]> {
+  const payload = await fetchJson<{ insights: ArticleItem[] }>(
+    '/api/admin/insights/home-order',
+    {
+      method: 'PUT',
+      body: JSON.stringify({ ids }),
+    },
+  )
+  return payload.insights
+}
+
 export async function adminDeleteInsight(id: string): Promise<void> {
   await fetchJson<{ ok: boolean }>(`/api/admin/insights/${id}`, {
     method: 'DELETE',

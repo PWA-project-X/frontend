@@ -30,6 +30,75 @@
   gap: 0.65rem;
 }
 
+.admin-home-status,
+.admin-home-warn {
+  margin: 0 0 1rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.admin-home-warn {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.35);
+}
+
+.admin-articles-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.admin-filter-btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.admin-filter-btn-active {
+  color: var(--text);
+  border-color: rgba(148, 163, 184, 0.55);
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.admin-home-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+  color: var(--text);
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.admin-home-check input {
+  accent-color: #38bdf8;
+}
+
+.admin-tag-home {
+  background: rgba(56, 189, 248, 0.16);
+  color: #7dd3fc;
+}
+
+.admin-tag-archived {
+  background: rgba(148, 163, 184, 0.16);
+  color: #cbd5e1;
+}
+
+.admin-article-row-archived {
+  opacity: 0.82;
+}
+
 .admin-articles-list {
   list-style: none;
   margin: 0;
@@ -40,13 +109,55 @@
 
 .admin-article-row {
   display: grid;
-  grid-template-columns: 7.5rem 1fr auto;
+  grid-template-columns: 1.75rem 7.5rem 1fr auto;
   gap: 1rem;
   align-items: center;
   padding: 0.9rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: var(--surface);
+}
+
+.admin-article-row-dragging {
+  opacity: 0.72;
+  box-shadow: 0 0.65rem 1.5rem rgba(2, 6, 23, 0.35);
+  z-index: 2;
+}
+
+.admin-drag-handle {
+  appearance: none;
+  box-sizing: border-box;
+  width: 1.75rem;
+  height: 2.15rem;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 0.55rem;
+  background: transparent;
+  color: var(--muted);
+  cursor: grab;
+  touch-action: none;
+}
+
+.admin-drag-handle:hover:not(:disabled) {
+  border-color: rgba(148, 163, 184, 0.45);
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--text);
+}
+
+.admin-drag-handle:active:not(:disabled) {
+  cursor: grabbing;
+}
+
+.admin-drag-handle:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.admin-drag-handle-spacer {
+  width: 1.75rem;
+  height: 2.15rem;
 }
 
 .admin-article-cover,
@@ -84,8 +195,48 @@
 .admin-article-row-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.35rem;
   justify-content: flex-end;
+}
+
+.admin-action-btn {
+  appearance: none;
+  box-sizing: border-box;
+  width: 2.15rem;
+  height: 2.15rem;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.admin-action-svg {
+  display: block;
+}
+
+.admin-action-btn:hover:not(:disabled) {
+  border-color: rgba(148, 163, 184, 0.55);
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.admin-action-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.admin-action-btn-danger:hover:not(:disabled) {
+  border-color: rgba(244, 63, 94, 0.45);
+  background: rgba(244, 63, 94, 0.12);
+  color: #fb7185;
 }
 
 .admin-article-form {
@@ -122,10 +273,32 @@
 
 @media (max-width: 720px) {
   .admin-article-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1.75rem 1fr;
+    grid-template-areas:
+      'handle cover'
+      'handle meta'
+      'handle actions';
+  }
+
+  .admin-drag-handle,
+  .admin-drag-handle-spacer {
+    grid-area: handle;
+    align-self: start;
+  }
+
+  .admin-article-cover,
+  .admin-article-cover-empty {
+    grid-area: cover;
+    width: 100%;
+    max-width: 12rem;
+  }
+
+  .admin-article-meta {
+    grid-area: meta;
   }
 
   .admin-article-row-actions {
+    grid-area: actions;
     justify-content: flex-start;
   }
 }
