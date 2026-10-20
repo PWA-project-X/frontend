@@ -10,6 +10,7 @@ import {
 } from '../api/client'
 import ArticleEditor from '../components/articleEditor/ArticleEditor'
 import Header from '../components/header/Header'
+import { confirmRemove } from '../utils/confirmRemove'
 import './adminArticlesPage.css'
 import './adminPage.css'
 import './authPages.css'
@@ -227,7 +228,10 @@ function AdminArticleEditPage() {
                     <button
                       type="button"
                       className="btn-nav"
-                      onClick={() => setCoverUrl('')}
+                      onClick={() => {
+                        if (!confirmRemove('a capa')) return
+                        setCoverUrl('')
+                      }}
                     >
                       Remover capa
                     </button>

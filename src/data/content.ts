@@ -43,6 +43,9 @@ export type ArticleItem = InsightItem & {
   body: string
   coverUrl?: string
   createdAt: string
+  showOnHome?: boolean
+  archived?: boolean
+  sortOrder?: number
 }
 
 export const companyFallback: CompanyInfo = {

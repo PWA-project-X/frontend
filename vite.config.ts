@@ -15,13 +15,22 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg'],
+      includeAssets: [
+        'favicon.png',
+        'favicon-32.png',
+        'icons/apple-touch-icon.png',
+        'brand/logo-white-horizontal.png',
+        'brand/logo-white-horizontal@2x.png',
+        'brand/logo-outline-white.png',
+        'brand/isotipo.png',
+        'brand/isotipo-sm.png',
+      ],
       manifest: {
         name: 'Portfólio Interno Miniverso',
         short_name: 'Miniverso',
         description:
           'Portfólio interno da Miniverso — empresa, serviços e processo de trabalho.',
-        theme_color: '#22d3ee',
+        theme_color: '#070b14',
         background_color: '#070b14',
         display: 'standalone',
         start_url: '/',

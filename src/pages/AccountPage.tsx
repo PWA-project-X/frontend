@@ -1,12 +1,18 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/useAuth'
 import Header from '../components/header/Header'
 import './authPages.css'
 
 function AccountPage() {
-  const { user } = useAuth()
+  const { user, logout } = useAuth()
+  const navigate = useNavigate()
 
   if (!user) return null
+
+  const handleLogout = async () => {
+    await logout()
+    navigate('/')
+  }
 
   return (
     <div className="app auth-page">
@@ -45,6 +51,13 @@ function AccountPage() {
                 Abrir painel
               </Link>
             ) : null}
+            <button
+              type="button"
+              className="btn-nav account-logout"
+              onClick={handleLogout}
+            >
+              Sair
+            </button>
           </div>
         </section>
       </main>

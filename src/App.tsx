@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
+import BottomNav from './components/bottomNav/BottomNav'
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute'
 import SiteAtmosphere from './components/siteAtmosphere/SiteAtmosphere'
 import AccountPage from './pages/AccountPage'
@@ -67,6 +68,7 @@ function App() {
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <BottomNav />
     </>
   )
 }
