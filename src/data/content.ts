@@ -230,6 +230,14 @@ export const projectsFallback: ProjectItem[] = [
 
 export const insightsFallback: InsightItem[] = [
   {
+    id: 'insight-immersive-media',
+    title: 'Experiência imersiva com mídia',
+    summary:
+      'Como texto, imagem e vídeo contam juntos uma narrativa de realidade virtual — do editor ao blog do portfólio.',
+    tag: 'Realidade Virtual',
+    coverUrl: '/media/articles/immersive-media-cover.jpg',
+  },
+  {
     id: 'insight-vr',
     title: 'Por que a RV acelera o aprendizado',
     summary:
