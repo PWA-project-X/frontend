@@ -39,7 +39,7 @@ function InsightsSection({ insights }: InsightsSectionProps) {
               <img
                 className="insight-featured-cover"
                 src={mediaUrl(featured.coverUrl)}
-                alt=""
+                alt={featured.title}
               />
             ) : null}
             <div className="insight-featured-body">
@@ -63,7 +63,7 @@ function InsightsSection({ insights }: InsightsSectionProps) {
                   <img
                     className="insight-card-cover"
                     src={mediaUrl(insight.coverUrl)}
-                    alt=""
+                    alt={insight.title}
                   />
                 ) : null}
                 <p className="insight-card-tag">{insight.tag}</p>

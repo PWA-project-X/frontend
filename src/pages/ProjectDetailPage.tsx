@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { getProject, mediaUrl } from '../api/client'
 import Header from '../components/header/Header'
 import type { ProjectItem } from '../data/content'
+import { sanitizeArticleHtml } from '../utils/sanitizeArticleHtml'
 import './projectDetailPage.css'
 import './authPages.css'
 import '../components/contactSection/style.css'
@@ -83,7 +84,7 @@ function ProjectDetailPage() {
               <img
                 className="project-detail-cover"
                 src={mediaUrl(project.coverUrl)}
-                alt=""
+                alt={project.title}
               />
             ) : null}
             <p className="project-detail-category">{project.category}</p>
@@ -96,11 +97,12 @@ function ProjectDetailPage() {
                 ))}
               </ul>
             ) : null}
-            <div className="project-detail-body">
-              {project.description.split(/\n+/).map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
+            <div
+              className="project-detail-body project-detail-body-html"
+              dangerouslySetInnerHTML={{
+                __html: sanitizeArticleHtml(project.description),
+              }}
+            />
           </article>
         ) : null}
       </main>

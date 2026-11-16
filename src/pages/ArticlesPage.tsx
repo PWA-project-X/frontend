@@ -88,7 +88,7 @@ function ArticlesPage() {
                 <img
                   className="article-featured-cover"
                   src={mediaUrl(featured.coverUrl)}
-                  alt=""
+                  alt={featured.title}
                 />
               ) : null}
               <div className="article-featured-body">
@@ -113,7 +113,7 @@ function ArticlesPage() {
                         <img
                           className="article-card-cover"
                           src={mediaUrl(article.coverUrl)}
-                          alt=""
+                          alt={article.title}
                         />
                       ) : null}
                       <p className="article-card-tag">{article.tag}</p>

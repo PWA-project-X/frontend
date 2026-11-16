@@ -122,13 +122,15 @@ function Header({ brand, showSectionNav = false }: HeaderProps) {
       </div>
 
       <nav className="nav-actions" aria-label="Conta e atalhos" hidden={minimized}>
-        <Link
-          className={`btn-nav${onBlog ? ' is-active' : ''}`}
-          to="/artigos"
-          aria-current={onBlog ? 'page' : undefined}
-        >
-          Blog
-        </Link>
+        {!(showSectionNav && onPortfolio) ? (
+          <Link
+            className={`btn-nav${onBlog ? ' is-active' : ''}`}
+            to="/artigos"
+            aria-current={onBlog ? 'page' : undefined}
+          >
+            Blog
+          </Link>
+        ) : null}
 
         {!loading && !user ? (
           <>

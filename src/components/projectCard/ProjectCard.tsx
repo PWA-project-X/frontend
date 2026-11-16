@@ -14,7 +14,7 @@ function ProjectCard({ project }: ProjectCardProps) {
         <img
           className="project-card-cover"
           src={mediaUrl(project.coverUrl)}
-          alt=""
+          alt={project.title}
         />
       ) : null}
       <p className="project-card-category">{project.category}</p>

@@ -107,14 +107,67 @@
   margin-top: 0.35rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border);
-}
-
-.project-detail-body p {
-  margin: 0;
   color: var(--text);
   font-size: 1rem;
   line-height: 1.7;
   overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.project-detail-body-html {
+  white-space: normal;
+  max-width: 100%;
+}
+
+.project-detail-body-html * {
+  max-width: 100%;
+}
+
+.project-detail-body-html p {
+  margin: 0 0 0.9rem;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.project-detail-body-html h2,
+.project-detail-body-html h3 {
+  margin: 1.25rem 0 0.5rem;
+  font-family: var(--font-display);
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.project-detail-body-html ul,
+.project-detail-body-html ol {
+  margin: 0 0 0.9rem;
+  padding-left: 1.35rem;
+  color: var(--text);
+}
+
+.project-detail-body-html li {
+  margin: 0.25rem 0;
+}
+
+.project-detail-body-html figure {
+  margin: 1rem 0;
+}
+
+.project-detail-body-html img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.6rem;
+  border: 1px solid var(--border);
+  margin: 0.75rem 0;
+}
+
+.project-detail-body-html figcaption {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.45;
 }
 
 @media (max-width: 720px) {

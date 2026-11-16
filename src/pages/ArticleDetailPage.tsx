@@ -89,7 +89,7 @@ function ArticleDetailPage() {
               <img
                 className="article-detail-cover"
                 src={mediaUrl(article.coverUrl)}
-                alt=""
+                alt={article.title}
               />
             ) : null}
             <p className="article-detail-tag">{article.tag}</p>

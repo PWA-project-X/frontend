@@ -46,7 +46,7 @@ export function sanitizeArticleHtml(body: string): string {
 
   const clean = DOMPurify.sanitize(source, {
     USE_PROFILES: { html: true },
-    ADD_TAGS: ['iframe'],
+    ADD_TAGS: ['iframe', 'figure', 'figcaption'],
     ADD_ATTR: [
       'allow',
       'allowfullscreen',

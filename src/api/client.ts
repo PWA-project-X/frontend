@@ -19,7 +19,10 @@ const API_URL =
 export function mediaUrl(path: string | undefined | null): string {
   if (!path) return ''
   if (/^https?:\/\//i.test(path)) return path
-  return `${API_URL}${path.startsWith('/') ? path : `/${path}`}`
+  const normalized = path.startsWith('/') ? path : `/${path}`
+  // Bundled portfolio media lives on the frontend origin (Vite public/).
+  if (normalized.startsWith('/media/')) return normalized
+  return `${API_URL}${normalized}`
 }
 
 export type FetchResult<T> = {

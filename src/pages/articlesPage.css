@@ -313,11 +313,22 @@
   margin: 1.2rem 0;
 }
 
+.article-detail-body-html figure {
+  margin: 1rem 0;
+}
+
 .article-detail-body-html img {
   max-width: 100%;
   height: auto;
   border-radius: 0.6rem;
   margin: 0.75rem 0;
+}
+
+.article-detail-body-html figcaption {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.45;
 }
 
 .article-detail-body-html iframe {
